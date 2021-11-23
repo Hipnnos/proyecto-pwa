@@ -38,7 +38,7 @@ import {
 
 function Billing() {
   // Chakra color mode
-  const iconTeal = useColorModeValue("teal.300", "teal.300");
+  const iconTeal = useColorModeValue("blue.500", "blue.500");
   const textColor = useColorModeValue("gray.700", "white");
   const borderColor = useColorModeValue("#dee2e6", "gray.500");
   const bgButton = useColorModeValue(
@@ -289,8 +289,8 @@ function Billing() {
               </Text>
               <Button
                 colorScheme="teal"
-                borderColor="teal.300"
-                color="teal.300"
+                borderColor="blue.500"
+                color="blue.500"
                 variant="outline"
                 fontSize="xs"
                 p="8px 32px"

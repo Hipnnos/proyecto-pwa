@@ -350,28 +350,28 @@ function Profile() {
                 <Flex>
                   <Link
                     href="#"
-                    color="teal.300"
+                    color="blue.500"
                     fontSize="lg"
                     me="10px"
-                    _hover={{ color: "teal.300" }}
+                    _hover={{ color: "blue.500" }}
                   >
                     <Icon as={FaFacebook} />
                   </Link>
                   <Link
                     href="#"
-                    color="teal.300"
+                    color="blue.500"
                     fontSize="lg"
                     me="10px"
-                    _hover={{ color: "teal.300" }}
+                    _hover={{ color: "blue.500" }}
                   >
                     <Icon as={FaInstagram} />
                   </Link>
                   <Link
                     href="#"
-                    color="teal.300"
+                    color="blue.500"
                     fontSize="lg"
                     me="10px"
-                    _hover={{ color: "teal.300" }}
+                    _hover={{ color: "blue.500" }}
                   >
                     <Icon as={FaTwitter} />
                   </Link>
@@ -410,7 +410,7 @@ function Profile() {
                   <Text
                     fontSize="sm"
                     fontWeight="600"
-                    color="teal.300"
+                    color="blue.500"
                     alignSelf="center"
                   >
                     REPLY
@@ -439,7 +439,7 @@ function Profile() {
                   <Text
                     fontSize="sm"
                     fontWeight="600"
-                    color="teal.300"
+                    color="blue.500"
                     alignSelf="center"
                   >
                     REPLY
@@ -468,7 +468,7 @@ function Profile() {
                   <Text
                     fontSize="sm"
                     fontWeight="600"
-                    color="teal.300"
+                    color="blue.500"
                     alignSelf="center"
                   >
                     REPLY
@@ -497,7 +497,7 @@ function Profile() {
                   <Text
                     fontSize="sm"
                     fontWeight="600"
-                    color="teal.300"
+                    color="blue.500"
                     alignSelf="center"
                   >
                     REPLY
@@ -526,7 +526,7 @@ function Profile() {
                   <Text
                     fontSize="sm"
                     fontWeight="600"
-                    color="teal.300"
+                    color="blue.500"
                     alignSelf="center"
                   >
                     REPLY
