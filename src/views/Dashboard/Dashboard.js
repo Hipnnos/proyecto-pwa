@@ -18,6 +18,7 @@ import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 import TablesTableRow from "components/Tables/TablesTableRow";
 import { tablesTableData } from "variables/general";
+import { NavLink } from "react-router-dom";
 
 function Tables() {
   const textColor = useColorModeValue("gray.700", "white");
@@ -30,7 +31,11 @@ function Tables() {
             Empleados
           </Text>
           &nbsp;&nbsp;&nbsp;
-          <Button>Agregar</Button>
+          <NavLink to="/admin/registro">
+            <Button>
+              <Text>Agregar</Text>
+            </Button>
+          </NavLink>
         </CardHeader>
         <CardBody>
           <Table variant="simple" color={textColor}>

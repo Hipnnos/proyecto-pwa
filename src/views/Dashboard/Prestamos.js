@@ -16,8 +16,7 @@ import {
 import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
-import TablesTableRow from "components/Tables/TablesTableRow";
-import { tablesTableData } from "variables/general";
+import { NavLink } from "react-router-dom";
 
 function TablesPrestamo() {
   const textColor = useColorModeValue("gray.700", "white");
@@ -30,7 +29,11 @@ function TablesPrestamo() {
             Prestamos
           </Text>
           &nbsp;&nbsp;&nbsp;
-          <Button>Solicitar</Button>
+          <NavLink to="#">
+            <Button>
+              <Text>Solicitar</Text>
+            </Button>
+          </NavLink>
         </CardHeader>
         <CardBody>
           <Table variant="simple" color={textColor}>

@@ -1,5 +1,8 @@
 // import
 import Dashboard from "views/Dashboard/Dashboard.js";
+import Registro from "views/Dashboard/Empleado/Registro"
+import Solicitar from "views/Dashboard/Prestamo/Solicitar"
+import Editar from "views/Dashboard/Empleado/Editar"
 import Prestamos from "views/Dashboard/Prestamos";
 import SignIn from "views/Pages/SignIn.js";
 import SignUp from "views/Pages/SignUp.js";
@@ -19,7 +22,14 @@ var dashRoutes = [
     path: "/empleados",
     name: "Empleados",
     icon: <PersonIcon color="inherit" />,
-    component: Dashboard,
+    component: Dashboard,    
+    layout: "/admin",
+  },
+  {
+    path: "/registro",
+    name: "Registro",
+    icon: <PersonIcon color="inherit" />,
+    component: Registro,
     layout: "/admin",
   },
   {
@@ -29,6 +39,15 @@ var dashRoutes = [
     component: Prestamos,
     layout: "/admin",
   },
+
+  {
+    path: "/solicitar",
+    name: "Solicitar",
+    icon: <CreditIcon color="inherit" />,
+    component: Solicitar,
+    layout: "/admin",
+  },
+
   {
     path: "/signin",
     name: "Loguearse",
@@ -45,4 +64,5 @@ var dashRoutes = [
     layout: "/auth",
   },
 ];
+
 export default dashRoutes;
