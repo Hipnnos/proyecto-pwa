@@ -6,7 +6,7 @@ import BillingRow from "components/Tables/BillingRow";
 
 const Tables = () => {
   const [state, setState] = useState(['']);
-
+  // console.log(state);
   useEffect(() => {
     fetch("http://ws-insumo.wsmprastreo.com.mx/api/empleados/all", {
       method: "GET",
@@ -17,7 +17,7 @@ const Tables = () => {
     })
       .then((response) => response.json())
       .then((datos) => {
-        setState(datos);
+        setState(datos['Empleados']);
       });
   }, []);
 
@@ -25,13 +25,19 @@ const Tables = () => {
     <Flex direction="column" pt={{ base: "120px", md: "75px" }}>
       {state.map(row => (
         <BillingRow
-          key={row.nombre}
           nombre={row.nombre}
           apePaterno={row.apePaterno}
-          correo={row.correo}
-          direction={row.direction}
+          apeMaterno={row.apeMaterno}
+          telefono={row.telefono}
+          curp={row.curp}
           rfc={row.rfc}
-          numTel={row.numTel}
+          correo={row.correo}
+          calle={row.calle}
+          num_casa={row.num_casa}
+          colonia={row.colonia}
+          codigo_postal={row.codigo_postal}
+          municipio={row.municipio}
+          estado={row.estado}
         />
       ))}
     </Flex>
