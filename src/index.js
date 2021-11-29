@@ -11,7 +11,7 @@ ReactDOM.render(
     <Switch>
       <Route path={`/auth`} component={AuthLayout} />
       <Route path={`/admin`} component={AdminLayout} />
-      <Redirect from={`/`} to="/auth/signup" />
+      <Redirect from={`/`} to="/auth/signin" />
     </Switch>
   </HashRouter>,document.getElementById("root")
 );

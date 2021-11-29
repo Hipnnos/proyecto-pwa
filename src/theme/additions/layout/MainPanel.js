@@ -10,12 +10,10 @@ const MainPanel = {
     transitionProperty: "top, bottom, width",
     transitionTimingFunction: "linear, linear, ease",
   },
+  
   variants: {
     main: (props) => ({
       float: "right",
-    }),
-    rtl: (props) => ({
-      float: "left",
     }),
   },
   defaultProps: {

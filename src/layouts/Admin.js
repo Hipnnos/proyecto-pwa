@@ -15,6 +15,7 @@ import FixedPlugin from "../components/FixedPlugin/FixedPlugin";
 import MainPanel from "../components/Layout/MainPanel";
 import PanelContainer from "../components/Layout/PanelContainer";
 import PanelContent from "../components/Layout/PanelContent";
+
 export default function Dashboard(props) {
   const { ...rest } = props;
   // states and functions
@@ -26,9 +27,14 @@ export default function Dashboard(props) {
   const getRoute = () => {
     return window.location.pathname !== "/admin/full-screen-maps";
   };
+
   const getActiveRoute = (routes) => {
     let activeRoute = "Default Brand Text";
+    /* if(localStorage.getItem('rol') == 'Empleado'){
+      routes = routes.splice(0, 1)
+    } */
     for (let i = 0; i < routes.length; i++) {
+      
       if (routes[i].collapse) {
         let collapseActiveRoute = getActiveRoute(routes[i].views);
         if (collapseActiveRoute !== activeRoute) {
@@ -91,61 +97,40 @@ export default function Dashboard(props) {
       }
     });
   };
+
   const { isOpen, onOpen, onClose } = useDisclosure();
   document.documentElement.dir = "ltr";
+
   // Chakra Color Mode
   return (
     <ChakraProvider theme={theme} resetCss={false}>
-      <Sidebar
-        routes={routes}
-        logoText={"PURITY UI DASHBOARD"}
-        display="none"
-        sidebarVariant={sidebarVariant}
-        {...rest}
-      />
+      <Sidebar routes={routes} display="none" sidebarVariant={sidebarVariant} {...rest}/>
       <MainPanel
         ref={mainPanel}
-        w={{
-          base: "100%",
-          xl: "calc(100% - 275px)",
-        }}
-      >
+        w={{base: "100%", xl: "calc(100% - 275px)",}}>
         <Portal>
-          <AdminNavbar
-            onOpen={onOpen}
-            logoText={"PURITY UI DASHBOARD"}
-            brandText={getActiveRoute(routes)}
-            secondary={getActiveNavbar(routes)}
-            fixed={fixed}
-            {...rest}
-          />
+          <AdminNavbar onOpen={onOpen} logoText={"GPS RASTREO POR SATÉLITE"} brandText={getActiveRoute(routes)} secondary={getActiveNavbar(routes)} fixed={fixed} {...rest} />
         </Portal>
         {getRoute() ? (
           <PanelContent>
             <PanelContainer>
               <Switch>
                 {getRoutes(routes)}
-                <Redirect from="/admin" to="/admin/empleados" />
+                <Redirect from="/admin" to="/admin/empleados" /> 
               </Switch>
             </PanelContainer>
           </PanelContent>
         ) : null}
         <Footer />
         <Portal>
-          <FixedPlugin
-            secondary={getActiveNavbar(routes)}
-            fixed={fixed}
-            onOpen={onOpen}
-          />
+          <FixedPlugin secondary={getActiveNavbar(routes)} fixed={fixed} onOpen={onOpen}/>
         </Portal>
         <Configurator
           secondary={getActiveNavbar(routes)}
           isOpen={isOpen}
           onClose={onClose}
           isChecked={fixed}
-          onSwitch={(value) => {
-            setFixed(value);
-          }}
+          onSwitch={(value) => {setFixed(value); }}
           onOpaque={() => setSidebarVariant("opaque")}
           onTransparent={() => setSidebarVariant("transparent")}
         />

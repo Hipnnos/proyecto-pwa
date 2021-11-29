@@ -1,11 +1,9 @@
-import {Avatar,Badge,Button,Flex,Td,Text,Tr,useColorModeValue,} from "@chakra-ui/react";
+import {Avatar,Button,Flex,Td,Text,Tr,useColorModeValue,} from "@chakra-ui/react";
 import React from "react";
 
 function TablesTableRow(props) {
   const { logo, name, email, direction, date, rfc, numTel } = props;
   const textColor = useColorModeValue("gray.700", "white");
-  const bgStatus = useColorModeValue("gray.400", "#1a202c");
-  const colorStatus = useColorModeValue("white", "gray.400");
 
   return (
     <Tr>
