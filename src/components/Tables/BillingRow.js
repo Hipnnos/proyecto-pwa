@@ -1,69 +1,76 @@
-import {
-  Box,
-  Button,
-  Flex,
-  Icon,
-  Text,
-  useColorModeValue,
-} from "@chakra-ui/react";
+import {Box,Button,Flex,Icon,Text,useColorModeValue} from "@chakra-ui/react";
 import React from "react";
 import { FaPencilAlt, FaTrashAlt } from "react-icons/fa";
 
 function BillingRow(props) {
-  const textColor = useColorModeValue("gray.700", "white");
   const bgColor = useColorModeValue("#F8F9FA", "gray.800");
   const nameColor = useColorModeValue("gray.500", "white");
-  const { name, company, email, number } = props;
+  const { nombre, apePaterno, apeMaterno, telefono, curp, rfc, correo, calle, num_casa, colonia, municipio, codigo_postal, estado } = props;
 
   return (
-    <Box p="24px" bg={bgColor} my="22px" borderRadius="12px">
-      <Flex justify="space-between" w="100%">
-        <Flex direction="column" maxWidth="70%">
+    <Box p="24px" bg={bgColor} my="10px" borderRadius="12px" border="1px solid black">
+      <Flex justify="space-between" w="90%">
+        <Flex direction="column" maxWidth="80%">
           <Text color={nameColor} fontSize="md" fontWeight="bold" mb="10px">
-            {name}
+            {nombre} {apePaterno} {apeMaterno}
           </Text>
           <Text color="gray.400" fontSize="sm" fontWeight="semibold">
-            Company Name:{" "}
+            Direccción:{" "}
             <Text as="span" color="gray.500">
-              {company}
+              {calle} #{num_casa}, Col. {colonia}, #{codigo_postal}
             </Text>
           </Text>
           <Text color="gray.400" fontSize="sm" fontWeight="semibold">
-            Email Address:{" "}
+            Teléfono:{" "}
             <Text as="span" color="gray.500">
-              {email}
+              {telefono}
             </Text>
           </Text>
           <Text color="gray.400" fontSize="sm" fontWeight="semibold">
-            VAT Number:{" "}
+            Correo:{" "}
             <Text as="span" color="gray.500">
-              {number}
+              {correo}
+            </Text>
+          </Text>
+          <Text color="gray.400" fontSize="sm" fontWeight="semibold">
+            CURP:{" "}
+            <Text as="span" color="gray.500">
+              {curp}
+            </Text>
+          </Text>
+          <Text color="gray.400" fontSize="sm" fontWeight="semibold">
+            RFC:{" "}
+            <Text as="span" color="gray.500">
+              {rfc}
+            </Text>
+          </Text>
+          <Text color="gray.400" fontSize="sm" fontWeight="semibold">
+            Estado:{" "}
+            <Text as="span" color="gray.500">
+              {estado}
+            </Text>
+          </Text>
+          <Text color="gray.400" fontSize="sm" fontWeight="semibold">
+            Municipio:{" "}
+            <Text as="span" color="gray.500">
+              {municipio}
             </Text>
           </Text>
         </Flex>
-        <Flex
-          direction={{ sm: "column", md: "row" }}
-          align="flex-start"
-          p={{ md: "24px" }}
-        >
-          <Button
-            p="0px"
-            bg="transparent"
-            mb={{ sm: "10px", md: "0px" }}
-            me={{ md: "12px" }}
-          >
-            <Flex color="red.500" cursor="pointer" align="center" p="12px">
-              <Icon as={FaTrashAlt} me="4px" />
+        <Flex direction={{ sm: "column", md: "row" }} align="flex-start" p={{ md: "24px" }}>
+          <Button p="0px" bg="transparent">
+            <Flex color="green.500" cursor="pointer" align="center" p="12px">
+              <Icon as={FaPencilAlt} me="4px" />
               <Text fontSize="sm" fontWeight="semibold">
-                DELETE
+                EDITAR
               </Text>
             </Flex>
           </Button>
-          <Button p="0px" bg="transparent">
-            <Flex color={textColor} cursor="pointer" align="center" p="12px">
-              <Icon as={FaPencilAlt} me="4px" />
+          <Button p="0px" bg="transparent" mb={{ sm: "10px", md: "0px" }} me={{ md: "12px" }}>
+            <Flex color="red.500" cursor="pointer" align="center" p="12px">
+              <Icon as={FaTrashAlt} me="4px" />
               <Text fontSize="sm" fontWeight="semibold">
-                EDIT
+                ELIMINAR
               </Text>
             </Flex>
           </Button>

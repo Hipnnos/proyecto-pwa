@@ -5,17 +5,8 @@ import Solicitar from "views/Dashboard/Prestamo/Solicitar"
 import Editar from "views/Dashboard/Empleado/Editar"
 import Prestamos from "views/Dashboard/Prestamos";
 import SignIn from "views/Pages/SignIn.js";
-import SignUp from "views/Pages/SignUp.js";
-
-import {
-  HomeIcon,
-  StatsIcon,
-  CreditIcon,
-  PersonIcon,
-  DocumentIcon,
-  RocketIcon,
-  SupportIcon,
-} from "components/Icons/Icons";
+import Registro from "views/Dashboard/Empleado/Registro";
+import {HomeIcon,CreditIcon,PersonIcon,} from "components/Icons/Icons";
 
 var dashRoutes = [
   {
@@ -23,6 +14,13 @@ var dashRoutes = [
     name: "Empleados",
     icon: <PersonIcon color="inherit" />,
     component: Dashboard,    
+    layout: "/admin",
+  },
+  {
+    path: "/registro",
+    name: "Registro",
+    icon: <PersonIcon color="inherit" />,
+    component: Registro,
     layout: "/admin",
   },
   {
@@ -50,19 +48,16 @@ var dashRoutes = [
 
   {
     path: "/signin",
-    name: "Loguearse",
+    name: "Login",
     icon: <HomeIcon color="inherit" />,
     component: SignIn,
-    layout: "/auth",
-  },
-  {
-    path: "/signup",
-    name: "Registrarse",
-    icon: <RocketIcon color="inherit" />,
     secondaryNavbar: true,
-    component: SignUp,
     layout: "/auth",
   },
 ];
+
+if(localStorage.getItem('rol') == 'Empleado'){
+  dashRoutes = dashRoutes.splice(2,2);
+}
 
 export default dashRoutes;

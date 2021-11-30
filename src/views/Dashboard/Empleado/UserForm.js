@@ -46,12 +46,10 @@ export class UserForm extends Component {
 
   render() {
     const { step } = this.state;
-    const { nombre, apePaterno, apeMaterno, telefono, curp, rfc, correo, password, calle,
-      num_casa, colonia, municipio, estado, codigo_postal, } = this.state;
-    const values = {
-      nombre, apePaterno, apeMaterno, telefono, curp, rfc, correo, password, calle,
-      num_casa, colonia, municipio, estado, codigo_postal,
-    };
+    const { nombre,apePaterno,apeMaterno,telefono,curp,rfc,correo,password,calle,
+    num_casa,colonia,municipio,estado,codigo_postal, } = this.state;
+    const values = { nombre,apePaterno,apeMaterno,telefono,curp,rfc,correo,password,calle,
+      num_casa,colonia,municipio,estado,codigo_postal,};
 
     console.log(values);
 

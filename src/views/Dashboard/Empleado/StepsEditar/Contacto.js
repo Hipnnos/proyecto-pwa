@@ -48,6 +48,7 @@ render() {
           mb="36px"
           type="number"
           onChange={handleChange('telefono')}
+          defaultValue={values.telefono}
           placeholder="Número de celular"
           size="lg"
         />

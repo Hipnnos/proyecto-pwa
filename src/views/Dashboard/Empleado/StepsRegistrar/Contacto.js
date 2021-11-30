@@ -3,6 +3,7 @@ import CardBody from "components/Card/CardBody.js";
 import CardHeader from "components/Card/CardHeader.js";
 // Chakra imports
 import {
+<<<<<<< HEAD
   Box,
   Flex,
   Button,
@@ -15,6 +16,12 @@ import {
   Select,
   Text,
   useColorModeValue,
+=======
+  Button,
+  FormLabel,
+  Input,
+  Text,
+>>>>>>> diego
 } from "@chakra-ui/react";
 
 export class Contacto extends Component {
