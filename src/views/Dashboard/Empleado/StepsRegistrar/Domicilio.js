@@ -86,11 +86,7 @@ export class Domicilio extends Component {
                   size="lg"
                 />
                 <FormLabel w="auto">Estado</FormLabel>
-<<<<<<< HEAD
-                <Select
-=======
                 <Input
->>>>>>> diego
                   borderRadius="15px"
                   border="3px solid"
                   onChange={handleChange('estado')}                
@@ -99,11 +95,7 @@ export class Domicilio extends Component {
                   size="lg"
                 />
                 <FormLabel w="auto">Municipio</FormLabel>
-<<<<<<< HEAD
-                <Select
-=======
                 <Input
->>>>>>> diego
                   borderRadius="15px"
                   border="3px solid"
                   onChange={handleChange('municipio')}                

@@ -5,7 +5,6 @@ import Solicitar from "views/Dashboard/Prestamo/Solicitar"
 import Editar from "views/Dashboard/Empleado/Editar"
 import Prestamos from "views/Dashboard/Prestamos";
 import SignIn from "views/Pages/SignIn.js";
-import Registro from "views/Dashboard/Empleado/Registro";
 import {HomeIcon,CreditIcon,PersonIcon,} from "components/Icons/Icons";
 
 var dashRoutes = [
@@ -14,13 +13,6 @@ var dashRoutes = [
     name: "Empleados",
     icon: <PersonIcon color="inherit" />,
     component: Dashboard,    
-    layout: "/admin",
-  },
-  {
-    path: "/registro",
-    name: "Registro",
-    icon: <PersonIcon color="inherit" />,
-    component: Registro,
     layout: "/admin",
   },
   {
