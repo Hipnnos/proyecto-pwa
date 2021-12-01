@@ -7,26 +7,23 @@ import {
   Flex,
   FormControl,
   Text,
-  useColorModeValue,
 } from "@chakra-ui/react";
-import UserForm from '../Prestamo/UserForm';
+import DatosSolicitar from './StepsSolicitar/DatosSolicitar';
 
-export default function Solicitar() {
-
-  const textColor = useColorModeValue("gray.700", "white");
+const Solicitar = () => {  
 
   return (
     <Flex direction="column" pt={{ base: "120px", md: "75px" }}>
       <Card overflowX={{ sm: "scroll", xl: "hidden" }}>
         <CardHeader p="6px 0px 22px 0px">
-          <Text fontSize="xl" color={textColor} fontWeight="bold">
+          <Text fontSize="xl" fontWeight="bold">
             Solicitar prestamos
           </Text>
           &nbsp;&nbsp;&nbsp;
         </CardHeader>
         <CardBody>
           <FormControl >
-            <UserForm />
+            <DatosSolicitar />
           </FormControl>
         </CardBody>
       </Card>
@@ -35,3 +32,5 @@ export default function Solicitar() {
 
   
 }
+
+export default Solicitar;

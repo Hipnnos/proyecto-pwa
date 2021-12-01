@@ -2,6 +2,7 @@
 import Dashboard from "views/Dashboard/Dashboard.js";
 import Registro from "views/Dashboard/Empleado/Registro"
 import Solicitar from "views/Dashboard/Prestamo/Solicitar"
+import RevisarSolicitar from "views/Dashboard/Prestamo/StepsSolicitar/RevisarSolicitud"
 import Editar from "views/Dashboard/Empleado/Editar"
 import Prestamos from "views/Dashboard/Prestamos";
 import SignIn from "views/Pages/SignIn.js";
@@ -37,7 +38,13 @@ var dashRoutes = [
     component: Solicitar,
     layout: "/admin",
   },
-
+  {
+    path: "/editarEmpleado",
+    name: "Editar empleado",
+    icon: <PersonIcon color="inherit" />,
+    component: Editar,    
+    layout: "/admin",
+  },
   {
     path: "/signin",
     name: "Login",

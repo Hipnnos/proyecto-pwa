@@ -3,63 +3,28 @@ import React from "react";
 import { FaPencilAlt, FaTrashAlt } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 
-function BillingRow(props) {
+function BillingRowPrestamo(props) {
   const bgColor = useColorModeValue("#F8F9FA", "gray.800");
   const nameColor = useColorModeValue("gray.500", "white");
-  const { nombre, apePaterno, apeMaterno, telefono, curp, rfc, correo, calle, num_casa, colonia, municipio, codigo_postal, estado } = props;
+  const { motivo, observaciones, cantidad, fechaEntrega,
+    motivo_cancelacion, motivo_devolucion, id_user, id_insumo } = props;
 
   return (
     <Box p="24px" bg={bgColor} my="10px" borderRadius="12px" border="1px solid black">
       <Flex justify="space-between" w="90%">
         <Flex direction="column" maxWidth="80%">
           <Text color={nameColor} fontSize="md" fontWeight="bold" mb="10px">
-            {nombre} {apePaterno} {apeMaterno}
+            {motivo}
           </Text>
           <Text color="gray.400" fontSize="sm" fontWeight="semibold">
-            Direccción:{" "}
+            Observaciones:{" "}
             <Text as="span" color="gray.500">
-              {calle} #{num_casa}, Col. {colonia}, #{codigo_postal}
-            </Text>
-          </Text>
-          <Text color="gray.400" fontSize="sm" fontWeight="semibold">
-            Teléfono:{" "}
-            <Text as="span" color="gray.500">
-              {telefono}
-            </Text>
-          </Text>
-          <Text color="gray.400" fontSize="sm" fontWeight="semibold">
-            Correo:{" "}
-            <Text as="span" color="gray.500">
-              {correo}
-            </Text>
-          </Text>
-          <Text color="gray.400" fontSize="sm" fontWeight="semibold">
-            CURP:{" "}
-            <Text as="span" color="gray.500">
-              {curp}
-            </Text>
-          </Text>
-          <Text color="gray.400" fontSize="sm" fontWeight="semibold">
-            RFC:{" "}
-            <Text as="span" color="gray.500">
-              {rfc}
-            </Text>
-          </Text>
-          <Text color="gray.400" fontSize="sm" fontWeight="semibold">
-            Estado:{" "}
-            <Text as="span" color="gray.500">
-              {estado}
-            </Text>
-          </Text>
-          <Text color="gray.400" fontSize="sm" fontWeight="semibold">
-            Municipio:{" "}
-            <Text as="span" color="gray.500">
-              {municipio}
+              {observaciones}
             </Text>
           </Text>
         </Flex>
         <Flex direction={{ sm: "column", md: "row" }} align="flex-start" p={{ md: "24px" }}>
-          <NavLink to={"/admin/editarEmpleado"}>
+          <NavLink to={"/admin/prestamos"}>
           <Button p="0px" bg="transparent">
             <Flex color="green.500" cursor="pointer" align="center" p="12px">
               <Icon as={FaPencilAlt} me="4px" />
@@ -83,4 +48,4 @@ function BillingRow(props) {
   );
 }
 
-export default BillingRow;
+export default BillingRowPrestamo;

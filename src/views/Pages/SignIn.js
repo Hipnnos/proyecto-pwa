@@ -45,6 +45,7 @@ function SignIn() {
           }else{
             localStorage.setItem('Token', data.access_token);
             localStorage.setItem('user', data.nombre_usuario);
+            localStorage.setItem('id_user', data.id_user);
 	          localStorage.setItem('rol', data.rol);
             console.log(data);
 

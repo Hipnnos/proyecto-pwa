@@ -1,13 +1,14 @@
 /*eslint-disable*/
 import { HamburgerIcon } from "@chakra-ui/icons";
 // chakra imports
-import {Box,Button,Drawer,DrawerBody,DrawerCloseButton,DrawerContent,DrawerOverlay,Flex,Link,Stack,Text,useColorModeValue,useDisclosure,} from "@chakra-ui/react";
+import { Box, Button, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerOverlay, Flex, Link, Stack, Text, useColorModeValue, useDisclosure, } from "@chakra-ui/react";
 import IconBox from "components/Icons/IconBox";
 import { CreativeTimLogo } from "components/Icons/Icons";
 import { Separator } from "components/Separator/Separator";
 import PropTypes from "prop-types";
 import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
+import { HomeIcon, CreditIcon, PersonIcon, } from "components/Icons/Icons";
 
 import LogImage from "assets/img/Logo_Gps_RPS.png";
 
@@ -41,65 +42,35 @@ function Sidebar(props) {
       sidebarActiveShadow = "none";
     }
 
-    return routes.map((prop) => {
-      if (prop.redirect) {
-        return null;
-      }
-      if (prop.category) {
-        var st = {};
-        st[prop["state"]] = !state[prop.state];
-        return (
-          <>
-            <Text color={activeColor} fontWeight="bold" mb={{xl: "12px",}} mx="auto" ps={{sm: "10px",xl: "16px",}} py="12px">
-              {document.documentElement.dir === "rtl"
-                ? prop.rtlName
-                : prop.name}
-            </Text>
-            {createLinks(prop.views)}
-          </>
-        );
-      }
 
-      return (
-        <NavLink to={prop.layout + prop.path}>
-          {activeRoute(prop.layout + prop.path) === "active" ? (
-            <Button justifyContent="flex-start" alignItems="center" boxShadow={sidebarActiveShadow} bg={activeBg} transition={variantChange}mb={{xl: "12px",}} mx={{xl: "auto",}} ps={{sm: "10px",xl: "16px",}} py="12px" borderRadius="15px" _hover="none" w="100%" _active={{bg: "inherit",transform: "none",borderColor: "transparent",}} _focus={{boxShadow: "0px 7px 11px rgba(0, 0, 0, 0.04)",}} >
-              <Flex>
-                {typeof prop.icon === "string" ? (
-                  <Icon>{prop.icon}</Icon>
-                ) : (
-                  <IconBox bg="blue.500" color="white" h="30px" w="30px" me="12px" transition={variantChange}>
-                    {prop.icon}
-                  </IconBox>
-                )}
-                <Text color={activeColor} my="auto" fontSize="sm">
-                  {document.documentElement.dir === "rtl"
-                    ? prop.rtlName
-                    : prop.name}
-                </Text>
-              </Flex>
-            </Button>
-          ) : (
-            <Button boxSize="initial" justifyContent="flex-start" alignItems="center" bg="transparent" mb={{xl: "12px",}} mx={{xl: "auto",}} py="12px" ps={{sm: "10px",xl: "16px",}} borderRadius="15px" _hover="none" w="100%" _active={{bg: "inherit",transform: "none",borderColor: "transparent",}} _focus={{boxShadow: "none",}}>
-              <Flex>
-                {typeof prop.icon === "string" ? (
-                  <Icon>{prop.icon}</Icon>
-                ) : (
-                  <IconBox bg={inactiveBg} color="blue.500" h="30px" w="30px" me="12px" transition={variantChange}>
-                    {prop.icon}
-                  </IconBox>
-                )}
-                <Text color={inactiveColor} my="auto" fontSize="sm">
-                  {document.documentElement.dir === "rtl"
-                    ? prop.rtlName
-                    : prop.name}
-                </Text>
-              </Flex>
-            </Button>
-          )}
+    return (
+      <>
+        <NavLink to={"admin/empleados"}>
+          <Button justifyContent="flex-start" alignItems="center" boxShadow={sidebarActiveShadow} bg={activeBg} transition={variantChange} mb={{ xl: "12px", }} mx={{ xl: "auto", }} ps={{ sm: "10px", xl: "16px", }} py="12px" borderRadius="15px" _hover="none" w="100%" _active={{ bg: "inherit", transform: "none", borderColor: "transparent", }} _focus={{ boxShadow: "0px 7px 11px rgba(0, 0, 0, 0.04)", }} >
+            <Flex>
+              <Text color={activeColor} my="auto" fontSize="sm">
+                <IconBox bg="blue.500" color="white" h="30px" w="30px" me="12px" transition={variantChange}>
+                  <PersonIcon color="inherit" />
+                </IconBox>  
+                Empleados              
+              </Text>
+            </Flex>
+          </Button>
         </NavLink>
-      );
-    });
+        <NavLink to={"/admin/prestamos"}>
+          <Button justifyContent="flex-start" alignItems="center" boxShadow={sidebarActiveShadow} bg={activeBg} transition={variantChange} mb={{ xl: "12px", }} mx={{ xl: "auto", }} ps={{ sm: "10px", xl: "16px", }} py="12px" borderRadius="15px" _hover="none" w="100%" _active={{ bg: "inherit", transform: "none", borderColor: "transparent", }} _focus={{ boxShadow: "0px 7px 11px rgba(0, 0, 0, 0.04)", }} >
+            <Flex>
+              <Text color={activeColor} my="auto" fontSize="sm">
+                <IconBox bg="blue.500" color="white" h="30px" w="30px" me="12px" transition={variantChange}>
+                  <PersonIcon color="inherit" />
+                </IconBox>  
+                Prestamos              
+              </Text>
+            </Flex>
+          </Button>
+        </NavLink>
+      </>
+    );
   };
 
   const { routes, sidebarVariant } = props;
@@ -131,7 +102,7 @@ function Sidebar(props) {
   return (
     <Box ref={mainPanel}>
       <Box display={{ sm: "none", xl: "block" }} position="fixed">
-        <Box bg={sidebarBg} transition={variantChange} w="260px" maxW="260px" ms={{sm: "16px",}} my={{sm: "16px",}} h="calc(100vh - 32px)" ps="20px" pe="20px" m={sidebarMargins} borderRadius={sidebarRadius}>
+        <Box bg={sidebarBg} transition={variantChange} w="260px" maxW="260px" ms={{ sm: "16px", }} my={{ sm: "16px", }} h="calc(100vh - 32px)" ps="20px" pe="20px" m={sidebarMargins} borderRadius={sidebarRadius}>
           <Box>{brand}</Box>
           <Stack direction="column" mb="40px">
             <Box>{links}</Box>
@@ -163,7 +134,7 @@ export function SidebarResponsive(props) {
     const inactiveColor = useColorModeValue("gray.400", "gray.400");
 
     return routes.map((prop) => {
-      
+
       if (prop.redirect) {
         return null;
       }
@@ -172,7 +143,7 @@ export function SidebarResponsive(props) {
         st[prop["state"]] = !state[prop.state];
         return (
           <>
-            <Text color={activeColor} fontWeight="bold" mb={{xl: "12px",}} mx="auto" ps={{sm: "10px",xl: "16px",}} py="12px">
+            <Text color={activeColor} fontWeight="bold" mb={{ xl: "12px", }} mx="auto" ps={{ sm: "10px", xl: "16px", }} py="12px">
               {document.documentElement.dir === "rtl"
                 ? prop.rtlName
                 : prop.name}
@@ -185,7 +156,7 @@ export function SidebarResponsive(props) {
       return (
         <NavLink to={prop.layout + prop.path}>
           {activeRoute(prop.layout + prop.path) === "active" ? (
-            <Button boxSize="initial" justifyContent="flex-start" alignItems="center" bg={activeBg} mb={{xl: "12px",}} mx={{xl: "auto",}} ps={{sm: "10px",xl: "16px",}} py="12px" borderRadius="15px" _hover="none" w="100%" _active={{bg: "inherit",transform: "none",borderColor: "transparent",}} _focus={{ boxShadow: "none",}}>
+            <Button boxSize="initial" justifyContent="flex-start" alignItems="center" bg={activeBg} mb={{ xl: "12px", }} mx={{ xl: "auto", }} ps={{ sm: "10px", xl: "16px", }} py="12px" borderRadius="15px" _hover="none" w="100%" _active={{ bg: "inherit", transform: "none", borderColor: "transparent", }} _focus={{ boxShadow: "none", }}>
               <Flex>
                 {typeof prop.icon === "string" ? (
                   <Icon>{prop.icon}</Icon>
@@ -202,7 +173,7 @@ export function SidebarResponsive(props) {
               </Flex>
             </Button>
           ) : (
-            <Button boxSize="initial" justifyContent="flex-start" alignItems="center" bg="transparent" mb={{xl: "12px",}} mx={{xl: "auto",}} py="12px" ps={{sm: "10px",xl: "16px",}} borderRadius="15px" _hover="none" w="100%" _active={{ bg: "inherit", transform: "none",borderColor: "transparent",}} _focus={{ boxShadow: "none",}} >
+            <Button boxSize="initial" justifyContent="flex-start" alignItems="center" bg="transparent" mb={{ xl: "12px", }} mx={{ xl: "auto", }} py="12px" ps={{ sm: "10px", xl: "16px", }} borderRadius="15px" _hover="none" w="100%" _active={{ bg: "inherit", transform: "none", borderColor: "transparent", }} _focus={{ boxShadow: "none", }} >
               <Flex>
                 {typeof prop.icon === "string" ? (
                   <Icon>{prop.icon}</Icon>
@@ -250,11 +221,11 @@ export function SidebarResponsive(props) {
   // Color variables
   return (
     <Flex display={{ sm: "flex", xl: "none" }} ref={mainPanel} alignItems="center">
-      <HamburgerIcon color={hamburgerColor} w="18px" h="18px" ref={btnRef} colorScheme="teal" onClick={onOpen}/>
+      <HamburgerIcon color={hamburgerColor} w="18px" h="18px" ref={btnRef} colorScheme="teal" onClick={onOpen} />
       <Drawer isOpen={isOpen} onClose={onClose} placement={document.documentElement.dir === "rtl" ? "right" : "left"} finalFocusRef={btnRef}>
         <DrawerOverlay />
-        <DrawerContent w="250px" maxW="250px" ms={{ sm: "16px",}} my={{sm: "16px",}} borderRadius="16px" >
-          <DrawerCloseButton _focus={{ boxShadow: "none" }} _hover={{ boxShadow: "none" }}/>
+        <DrawerContent w="250px" maxW="250px" ms={{ sm: "16px", }} my={{ sm: "16px", }} borderRadius="16px" >
+          <DrawerCloseButton _focus={{ boxShadow: "none" }} _hover={{ boxShadow: "none" }} />
           <DrawerBody maxW="250px" px="1rem">
             <Box maxW="100%" h="100vh">
               <Box>{brand}</Box>
