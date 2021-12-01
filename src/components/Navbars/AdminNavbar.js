@@ -26,7 +26,6 @@ export default function AdminNavbar(props) {
 
   // Here are all the props that may change depending on navbar's type or state.(secondary, variant, scrolled)
   let mainText = useColorModeValue("gray.700", "gray.200");
-  let secondaryText = useColorModeValue("gray.400", "gray.200");
   let navbarPosition = "absolute";
   let navbarFilter = "none";
   let navbarBackdrop = "blur(21px)";

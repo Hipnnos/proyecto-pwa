@@ -45,6 +45,7 @@ function SignIn() {
           }else{
             localStorage.setItem('Token', data.access_token);
             localStorage.setItem('user', data.nombre_usuario);
+            localStorage.setItem('id_user', data.id_user);
 	          localStorage.setItem('rol', data.rol);
             console.log(data);
 
@@ -91,12 +92,6 @@ function SignIn() {
                 Contraseña
               </FormLabel>
               <Input borderRadius="15px" id="password" value={password} onChange={handleChangePassword} border="2px solid black" mb="36px" fontSize="sm" type="password" placeholder="Tu contraseña" size="lg" />
-              {/* <FormControl display="flex" alignItems="center">
-                <Switch id="remember-login" colorScheme="teal" me="10px" />
-                <FormLabel htmlFor="remember-login" mb="0" ms="1" fontWeight="normal" >
-                  Recuérdame
-                </FormLabel>
-              </FormControl> */}
               <Button fontSize="10px" onClick={onClickLogin} type="submit" bg="blue.500" w="100%" h="45" mb="20px" color="white" mt="20px" _hover={{bg: "blue.400",}} _active={{bg: "teal.400",}} >
                 INICIAR SESIÓN
               </Button>

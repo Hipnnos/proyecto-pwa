@@ -86,18 +86,22 @@ export class Domicilio extends Component {
                   size="lg"
                 />
                 <FormLabel w="auto">Estado</FormLabel>
-                <Select
+                <Input
                   borderRadius="15px"
                   border="3px solid"
+                  mb="36px"
+                  type="text"
                   onChange={handleChange('estado')}                
                   defaultValue={values.estado}
                   mb="36px"
                   size="lg"
                 />
                 <FormLabel w="auto">Municipio</FormLabel>
-                <Select
+                <Input
                   borderRadius="15px"
                   border="3px solid"
+                  mb="36px"
+                  type="text"
                   onChange={handleChange('municipio')}                
                   defaultValue={values.municipio}
                   mb="36px"

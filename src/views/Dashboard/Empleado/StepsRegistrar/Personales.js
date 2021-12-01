@@ -2,20 +2,7 @@ import React, { Component } from "react";
 import CardBody from "components/Card/CardBody.js";
 import CardHeader from "components/Card/CardHeader.js";
 // Chakra imports
-import {
-    Box,
-    Flex,
-    Button,
-    FormControl,
-    FormLabel,
-    Heading,
-    Input,
-    Link,
-    Switch,
-    Select,
-    Text,
-    useColorModeValue,
-} from "@chakra-ui/react";
+import {Box,Flex,Button,FormControl,FormLabel,Heading,Input,Link,Switch,Select,Text,useColorModeValue,} from "@chakra-ui/react";
 
 export class Personales extends Component {
     continue = e => {
@@ -90,7 +77,16 @@ export class Personales extends Component {
               defaultValue={values.rfc}
               placeholder="RFC"
               size="lg"
-            />            
+            />
+            <FormLabel>Rol</FormLabel>
+            <Select borderRadius="15px" border="3px solid" mb="36px" type="text" 
+              onChange={handleChange('rol')} name="rol" size="lg">
+              <option value="0">Selecciona una opcion</option>
+              <option value="Empleado">Empleado</option>
+              <option value="Almacen">Almacenista</option>
+              <option value="Contador">Contador</option>
+              <option value="Gerente">Gerente</option>
+            </Select>
             <CardBody>
                 <Button
                     type="submit"

@@ -1,8 +1,11 @@
 // Chakra imports
 import React, { useState, useEffect } from "react";
 // Chakra imports
-import { Flex } from "@chakra-ui/react";
+import { Flex, Button } from "@chakra-ui/react";
 import BillingRow from "components/Tables/BillingRow";
+import { NavLink } from "react-router-dom";
+
+import CardHeader from "components/Card/CardHeader.js";
 
 const Tables = () => {
   const [state, setState] = useState(['']);
@@ -23,8 +26,14 @@ const Tables = () => {
 
   return (
     <Flex direction="column" pt={{ base: "120px", md: "75px" }}>
+      <CardHeader p="6px 0px 22px 0px">
+        <NavLink to="/admin/registro">
+          <Button color="blue.500">Agregar</Button>
+        </NavLink>
+      </CardHeader>
       {state.map(row => (
         <BillingRow
+          id_empleado={row.id}
           nombre={row.nombre}
           apePaterno={row.apePaterno}
           apeMaterno={row.apeMaterno}
@@ -38,6 +47,7 @@ const Tables = () => {
           codigo_postal={row.codigo_postal}
           municipio={row.municipio}
           estado={row.estado}
+          rol={row.rol}
         />
       ))}
     </Flex>

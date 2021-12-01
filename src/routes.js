@@ -3,7 +3,8 @@ import Dashboard from "views/Dashboard/Dashboard.js";
 import Prestamos from "views/Dashboard/Prestamos";
 import SignIn from "views/Pages/SignIn.js";
 import Registro from "views/Dashboard/Empleado/Registro";
-import {HomeIcon,CreditIcon,PersonIcon,} from "components/Icons/Icons";
+import {HomeIcon,CreditIcon,PersonIcon,SupportIcon, WalletIcon} from "components/Icons/Icons";
+import Editar from "views/Dashboard/Empleado/Editar";
 
 var dashRoutes = [
   {
@@ -15,9 +16,16 @@ var dashRoutes = [
   },
   {
     path: "/registro",
-    name: "Registro",
-    icon: <PersonIcon color="inherit" />,
+    name: "Registrar",
+    icon: <SupportIcon color="inherit" />,
     component: Registro,
+    layout: "/admin",
+  },
+  {
+    path: "/editar",
+    name: "Editar Empleado",
+    icon: <WalletIcon color="inherit" />,
+    component: Editar,
     layout: "/admin",
   },
   {
@@ -37,8 +45,9 @@ var dashRoutes = [
   },
 ];
 
-if(localStorage.getItem('rol') == 'Empleado'){
-  dashRoutes = dashRoutes.splice(2,2);
-}
+// if(localStorage.getItem('rol') === 'Empleado'){
+//   dashRoutes = dashRoutes.splice(2,2);
+
+// }
 
 export default dashRoutes;

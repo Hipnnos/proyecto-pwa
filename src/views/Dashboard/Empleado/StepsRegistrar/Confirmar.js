@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
 import CardBody from "components/Card/CardBody.js";
-import CardHeader from "components/Card/CardHeader.js";
 import Swal from "sweetalert2";
 // Chakra imports
-import { Button, FormLabel, Input } from "@chakra-ui/react";
+import { Button, FormLabel, Text } from "@chakra-ui/react";
+import CardHeader from "components/Card/CardHeader.js";
 
 const Confirmar = ({ prevStep, nextStep, values }) => {
   console.log(values);
@@ -23,6 +23,7 @@ const Confirmar = ({ prevStep, nextStep, values }) => {
     municipio,
     estado,
     codigo_postal,
+    rol
   } = values;
 
   const Continue = (e) => {
@@ -35,7 +36,7 @@ const Confirmar = ({ prevStep, nextStep, values }) => {
     prevStep();
   };
 
-  const onClicRegistro = () => {
+  const onClickAgregar = () => {
     var data = {
       nombre: nombre,
       apePaterno: apePaterno,
@@ -51,6 +52,7 @@ const Confirmar = ({ prevStep, nextStep, values }) => {
       municipio: municipio,
       estado: estado,
       codigo_postal: codigo_postal,
+      rol: rol
     };
     console.log(data);
     fetch("http://ws-insumo.wsmprastreo.com.mx/api/empleado/create", {
@@ -64,58 +66,117 @@ const Confirmar = ({ prevStep, nextStep, values }) => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        if (!data) {
-          Swal.fire({
-            title: "Error!",
-            text: "Credenciales incorrectas",
-            icon: "error",
-          });
-        } else {
-          localStorage.setItem("nombre", data.nombre);
-          localStorage.setItem("apePaterno", data.apePaterno);
-          localStorage.setItem("apeMaterno", data.apeMaterno);
-          localStorage.setItem("telefono", data.telefono);
-          localStorage.setItem("curp", data.curp);
-          localStorage.setItem("rfc", data.rfc);
-          localStorage.setItem("correo", data.correo);
-          localStorage.setItem("password", data.password);
-          localStorage.setItem("calle", data.calle);
-          localStorage.setItem("num_casa", data.num_casa);
-          localStorage.setItem("colonia", data.colonia);
-          localStorage.setItem("estado", data.estado);
-          localStorage.setItem("municipio", data.municipio);
-          localStorage.setItem("codigo_postal", data.codigo_postal);
-          console.log(data);
-          window.location.href = "/purity-ui-dashboard#/admin/empleados/";
-          setTimeout(() => {
-            window.location.reload();
-          }, 500);
-        }
+        window.location.href = "/purity-ui-dashboard#/admin/empleados/";
+        Swal.fire({
+          icon: "sucess",
+          title: "Empleado Agregado",
+        });
+        setTimeout(() => {
+          window.location.reload();
+        }, 500);
       })
       .catch((res) => {
         console.log(res);
       })
       .catch((res) => {
         console.log(res);
-      });
-  };
+    });
+  }
 
   return (
     <>
-      <FormLabel value={nombre}>{nombre}</FormLabel>
-      <FormLabel value={apePaterno}>{apePaterno}</FormLabel>
-      <FormLabel value={apeMaterno}>{apeMaterno}</FormLabel>
-      <FormLabel value={telefono}>{telefono}</FormLabel>
-      <FormLabel value={curp}>{curp}</FormLabel>
-      <FormLabel value={rfc}>{rfc}</FormLabel>
-      <FormLabel value={correo}>{correo}</FormLabel>
-      <FormLabel value={password}>{password}</FormLabel>
-      <FormLabel value={calle}>{calle}</FormLabel>
-      <FormLabel value={colonia}>{colonia}</FormLabel>
-      <FormLabel value={num_casa}>{num_casa}</FormLabel>
-      <FormLabel value={municipio}>{municipio}</FormLabel>
-      <FormLabel value={estado}>{estado}</FormLabel>
-      <FormLabel value={codigo_postal}>{codigo_postal}</FormLabel>
+      <CardHeader p="6px 0px 22px 0px">
+        <Text fontSize="xl" fontWeight="bold">
+          Confirmación de Datos
+        </Text>
+        &nbsp;&nbsp;&nbsp;
+      </CardHeader>
+      <table className="table">
+        <thead>
+          <tr>
+            <th className="col">Nombre</th>
+            <th className="col">Apellido paterno</th>
+            <th className="col">Apellido materno</th>
+            <th className="col">CURP</th>
+            <th className="col">RFC</th>
+            <th className="col">Rol</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <FormLabel value={nombre}>{nombre}</FormLabel>
+            </td>
+            <td>
+              <FormLabel value={apePaterno}>{apePaterno}</FormLabel>
+            </td>
+            <td>
+              <FormLabel value={apeMaterno}>{apeMaterno}</FormLabel>
+            </td>
+            <td>
+              <FormLabel value={curp}>{curp}</FormLabel>
+            </td>
+            <td>
+              <FormLabel value={rfc}>{rfc}</FormLabel>
+            </td>
+            <td>
+              <FormLabel value={rol}>{rol}</FormLabel>
+            </td>
+          </tr>
+        </tbody>
+        <thead>
+          <tr>
+            <th className="col">Calle</th>
+            <th className="col">Colonia</th>
+            <th className="col">Numero de casa</th>
+            <th className="col">Codigo Postal</th>
+            <th className="col">Estado</th>
+            <th className="col">Municipio</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <FormLabel value={calle}>{calle}</FormLabel>
+            </td>
+            <td>
+              <FormLabel value={colonia}>{colonia}</FormLabel>
+            </td>
+            <td>
+              <FormLabel value={num_casa}>{num_casa}</FormLabel>
+            </td>
+            <td>
+              <FormLabel value={codigo_postal}>{codigo_postal}</FormLabel>
+            </td>
+            <td>
+              <FormLabel value={estado}>{estado}</FormLabel>
+            </td>
+            <td>
+              <FormLabel value={municipio}>{municipio}</FormLabel>
+            </td>
+          </tr>
+        </tbody>
+        <thead>
+          <tr>
+            <th className="col">Número de Celular</th>
+            <th className="col">Correo electrónico</th>
+            <th className="col">Contraseña</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <FormLabel value={telefono}>{telefono}</FormLabel>
+            </td>
+            <td>
+              <FormLabel value={correo}>{correo}</FormLabel>
+            </td>
+            <td>
+              <FormLabel value={password}>{password}</FormLabel>
+            </td>
+          </tr>
+        </tbody>
+      </table>
       <CardBody>
         <Button
           type="submit"
@@ -126,12 +187,8 @@ const Confirmar = ({ prevStep, nextStep, values }) => {
           color="white"
           mt="20px"
           onClick={Previous}
-          _hover={{
-            bg: "red.200",
-          }}
-          _active={{
-            bg: "red.400",
-          }}
+          _hover={{ bg: "red.200" }}
+          _active={{ bg: "red.400" }}
         >
           Regresar
         </Button>
@@ -144,13 +201,9 @@ const Confirmar = ({ prevStep, nextStep, values }) => {
           mb="20px"
           color="white"
           mt="20px"
-          _hover={{
-            bg: "green.200",
-          }}
-          _active={{
-            bg: "green.400",
-          }}
-          onClick={onClicRegistro}
+          _hover={{ bg: "green.200" }}
+          _active={{ bg: "green.400" }}
+          onClick={onClickAgregar}
         >
           Registrar
         </Button>

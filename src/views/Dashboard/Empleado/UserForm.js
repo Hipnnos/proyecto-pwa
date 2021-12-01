@@ -21,6 +21,7 @@ export class UserForm extends Component {
     municipio: "",
     estado: "",
     codigo_postal: "",
+    rol: "",
   };
 
   // Proceed to next step
@@ -47,9 +48,9 @@ export class UserForm extends Component {
   render() {
     const { step } = this.state;
     const { nombre,apePaterno,apeMaterno,telefono,curp,rfc,correo,password,calle,
-    num_casa,colonia,municipio,estado,codigo_postal, } = this.state;
+    num_casa,colonia,municipio,estado,codigo_postal, rol } = this.state;
     const values = { nombre,apePaterno,apeMaterno,telefono,curp,rfc,correo,password,calle,
-      num_casa,colonia,municipio,estado,codigo_postal,};
+      num_casa,colonia,municipio,estado,codigo_postal, rol};
 
     console.log(values);
 

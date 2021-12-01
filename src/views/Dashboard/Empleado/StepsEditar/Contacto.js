@@ -30,7 +30,7 @@ export class Contacto extends Component {
   };
 
 render() {
-    const { values, handleChange } = this.props;
+    const {values,handleChange} = this.props;
 
     return (
       <>
@@ -61,24 +61,6 @@ render() {
           onChange={handleChange('correo')}
           defaultValue={values.correo}
           placeholder="Correo electronico"
-          size="lg"
-        />
-        <FormLabel>Contraseña</FormLabel>
-        <Input
-          borderRadius="15px"
-          border="3px solid"
-          mb="36px"
-          type="password"
-          onChange={handleChange('password')}
-          defaultValue={values.password}
-          placeholder="Contraseña"
-          size="lg"
-        />
-        <FormLabel w="auto">Rol</FormLabel>
-        <Select
-          borderRadius="15px"
-          border="3px solid"
-          mb="36px"
           size="lg"
         />
         <CardBody>

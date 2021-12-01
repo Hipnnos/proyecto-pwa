@@ -2,12 +2,11 @@
 import { HamburgerIcon } from "@chakra-ui/icons";
 // chakra imports
 import {Box,Button,Drawer,DrawerBody,DrawerCloseButton,DrawerContent,DrawerOverlay,Flex,Link,Stack,Text,useColorModeValue,useDisclosure,} from "@chakra-ui/react";
-import IconBox from "components/Icons/IconBox";
-import { CreativeTimLogo } from "components/Icons/Icons";
 import { Separator } from "components/Separator/Separator";
 import PropTypes from "prop-types";
 import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
+import {CreditIcon,PersonIcon} from "components/Icons/Icons";
 
 import LogImage from "assets/img/Logo_Gps_RPS.png";
 
@@ -41,66 +40,35 @@ function Sidebar(props) {
       sidebarActiveShadow = "none";
     }
 
-    return routes.map((prop) => {
-      if (prop.redirect) {
-        return null;
+    const rol = localStorage.getItem('rol');
+    
+    return (
+      <>
+      {rol == "Administrador" || "Gerente" ?
+        <NavLink to={"admin/empleados"}>
+          <Button justifyContent="flex-start" alignItems="center" boxShadow={sidebarActiveShadow} bg={activeBg} transition={variantChange} mb={{ xl: "12px", }} mx={{ xl: "auto", }} ps={{ sm: "10px", xl: "16px", }} py="12px" borderRadius="15px" _hover="none" w="100%" _active={{ bg: "inherit", transform: "none", borderColor: "transparent", }} _focus={{ boxShadow: "0px 7px 11px rgba(0, 0, 0, 0.04)", }} >
+            <Flex>
+              <Text color={activeColor} my="auto" fontSize="sm">            
+                <PersonIcon borderRadius="5px" bg="blue.500" color="white" h="25px" w="25px" me="10px" transition={variantChange} color="white" /> Empleados
+              </Text>
+            </Flex>
+          </Button>
+        </NavLink> : null
       }
-      if (prop.category) {
-        var st = {};
-        st[prop["state"]] = !state[prop.state];
-        return (
-          <>
-            <Text color={activeColor} fontWeight="bold" mb={{xl: "12px",}} mx="auto" ps={{sm: "10px",xl: "16px",}} py="12px">
-              {document.documentElement.dir === "rtl"
-                ? prop.rtlName
-                : prop.name}
-            </Text>
-            {createLinks(prop.views)}
-          </>
-        );
-      }
-
-      return (
-        <NavLink to={prop.layout + prop.path}>
-          {activeRoute(prop.layout + prop.path) === "active" ? (
-            <Button justifyContent="flex-start" alignItems="center" boxShadow={sidebarActiveShadow} bg={activeBg} transition={variantChange}mb={{xl: "12px",}} mx={{xl: "auto",}} ps={{sm: "10px",xl: "16px",}} py="12px" borderRadius="15px" _hover="none" w="100%" _active={{bg: "inherit",transform: "none",borderColor: "transparent",}} _focus={{boxShadow: "0px 7px 11px rgba(0, 0, 0, 0.04)",}} >
-              <Flex>
-                {typeof prop.icon === "string" ? (
-                  <Icon>{prop.icon}</Icon>
-                ) : (
-                  <IconBox bg="blue.500" color="white" h="30px" w="30px" me="12px" transition={variantChange}>
-                    {prop.icon}
-                  </IconBox>
-                )}
-                <Text color={activeColor} my="auto" fontSize="sm">
-                  {document.documentElement.dir === "rtl"
-                    ? prop.rtlName
-                    : prop.name}
-                </Text>
-              </Flex>
-            </Button>
-          ) : (
-            <Button boxSize="initial" justifyContent="flex-start" alignItems="center" bg="transparent" mb={{xl: "12px",}} mx={{xl: "auto",}} py="12px" ps={{sm: "10px",xl: "16px",}} borderRadius="15px" _hover="none" w="100%" _active={{bg: "inherit",transform: "none",borderColor: "transparent",}} _focus={{boxShadow: "none",}}>
-              <Flex>
-                {typeof prop.icon === "string" ? (
-                  <Icon>{prop.icon}</Icon>
-                ) : (
-                  <IconBox bg={inactiveBg} color="blue.500" h="30px" w="30px" me="12px" transition={variantChange}>
-                    {prop.icon}
-                  </IconBox>
-                )}
-                <Text color={inactiveColor} my="auto" fontSize="sm">
-                  {document.documentElement.dir === "rtl"
-                    ? prop.rtlName
-                    : prop.name}
-                </Text>
-              </Flex>
-            </Button>
-          )}
+        <NavLink to={"/admin/prestamos"}>
+          <Button justifyContent="flex-start" alignItems="center" boxShadow={sidebarActiveShadow} bg={activeBg} transition={variantChange} mb={{ xl: "12px", }} mx={{ xl: "auto", }} ps={{ sm: "10px", xl: "16px", }} py="12px" borderRadius="15px" _hover="none" w="100%" _active={{ bg: "inherit", transform: "none", borderColor: "transparent", }} _focus={{ boxShadow: "0px 7px 11px rgba(0, 0, 0, 0.04)", }} >
+            <Flex>
+              <Text color={activeColor} my="auto" fontSize="sm">
+                <CreditIcon borderRadius="5px" bg="blue.500" color="white" h="25px" w="25px" me="10px" transition={variantChange} color="white" />   Prestamos
+              </Text>
+            </Flex>
+          </Button>
         </NavLink>
-      );
-    });
+       
+      </>
+    );
   };
+
 
   const { routes, sidebarVariant } = props;
 
@@ -151,6 +119,8 @@ export function SidebarResponsive(props) {
   const [state, setState] = React.useState({});
   const mainPanel = React.useRef();
   // verifies if routeName is the one active (in browser input)
+  let variantChange = "0.2s linear";
+  let sidebarActiveShadow = "0px 7px 11px rgba(0, 0, 0, 0.04)";
   const activeRoute = (routeName) => {
     return location.pathname === routeName ? "active" : "";
   };
@@ -162,67 +132,34 @@ export function SidebarResponsive(props) {
     const activeColor = useColorModeValue("gray.700", "white");
     const inactiveColor = useColorModeValue("gray.400", "gray.400");
 
-    return routes.map((prop) => {
-      
-      if (prop.redirect) {
-        return null;
-      }
-      if (prop.category) {
-        var st = {};
-        st[prop["state"]] = !state[prop.state];
-        return (
-          <>
-            <Text color={activeColor} fontWeight="bold" mb={{xl: "12px",}} mx="auto" ps={{sm: "10px",xl: "16px",}} py="12px">
-              {document.documentElement.dir === "rtl"
-                ? prop.rtlName
-                : prop.name}
-            </Text>
-            {createLinks(prop.views)}
-          </>
-        );
-      }
+    const rol = localStorage.getItem('rol');
 
       return (
-        <NavLink to={prop.layout + prop.path}>
-          {activeRoute(prop.layout + prop.path) === "active" ? (
-            <Button boxSize="initial" justifyContent="flex-start" alignItems="center" bg={activeBg} mb={{xl: "12px",}} mx={{xl: "auto",}} ps={{sm: "10px",xl: "16px",}} py="12px" borderRadius="15px" _hover="none" w="100%" _active={{bg: "inherit",transform: "none",borderColor: "transparent",}} _focus={{ boxShadow: "none",}}>
+        <>
+        {rol == "Administrador" || "Gerente" ?
+          <NavLink to="/admin/empleados">
+              <Button boxSize="initial" justifyContent="flex-start" alignItems="center" bg={activeBg} mb={{xl: "12px",}} mx={{xl: "auto",}} ps={{sm: "10px",xl: "16px",}} py="12px" borderRadius="15px" _hover="none" w="100%" _active={{bg: "inherit",transform: "none",borderColor: "transparent",}} _focus={{ boxShadow: "none",}}>
+                <Flex>
+                  <Text color={activeColor} my="auto" fontSize="sm">
+                    <PersonIcon borderRadius="5px" bg="blue.500" color="white" h="25px" w="25px" me="10px" transition={variantChange} color="white" /> Empleados
+                  </Text>
+                </Flex>
+              </Button>
+          </NavLink> : null
+        }
+          <NavLink to={"/admin/prestamos"}>
+            <Button justifyContent="flex-start" alignItems="center" boxShadow={sidebarActiveShadow} bg={activeBg} transition={variantChange} mb={{ xl: "12px", }} mx={{ xl: "auto", }} ps={{ sm: "10px", xl: "16px", }} py="12px" borderRadius="15px" _hover="none" w="100%" _active={{ bg: "inherit", transform: "none", borderColor: "transparent", }} _focus={{ boxShadow: "0px 7px 11px rgba(0, 0, 0, 0.04)", }} >
               <Flex>
-                {typeof prop.icon === "string" ? (
-                  <Icon>{prop.icon}</Icon>
-                ) : (
-                  <IconBox bg="blue.500" color="white" h="30px" w="30px" me="12px">
-                    {prop.icon}
-                  </IconBox>
-                )}
                 <Text color={activeColor} my="auto" fontSize="sm">
-                  {document.documentElement.dir === "rtl"
-                    ? prop.rtlName
-                    : prop.name}
+                  <CreditIcon borderRadius="5px" bg="blue.500" color="white" h="25px" w="25px" me="10px" transition={variantChange} color="white" />   Prestamos
                 </Text>
               </Flex>
             </Button>
-          ) : (
-            <Button boxSize="initial" justifyContent="flex-start" alignItems="center" bg="transparent" mb={{xl: "12px",}} mx={{xl: "auto",}} py="12px" ps={{sm: "10px",xl: "16px",}} borderRadius="15px" _hover="none" w="100%" _active={{ bg: "inherit", transform: "none",borderColor: "transparent",}} _focus={{ boxShadow: "none",}} >
-              <Flex>
-                {typeof prop.icon === "string" ? (
-                  <Icon>{prop.icon}</Icon>
-                ) : (
-                  <IconBox bg={inactiveBg} color="blue.500" h="30px" w="30px" me="12px" >
-                    {prop.icon}
-                  </IconBox>
-                )}
-                <Text color={inactiveColor} my="auto" fontSize="sm">
-                  {document.documentElement.dir === "rtl"
-                    ? prop.rtlName
-                    : prop.name}
-                </Text>
-              </Flex>
-            </Button>
-          )}
-        </NavLink>
+          </NavLink>        
+        </>
       );
-    });
   };
+
   const { logoText, routes, ...rest } = props;
 
   var links = <>{createLinks(routes)}</>;
@@ -234,8 +171,8 @@ export function SidebarResponsive(props) {
   }
   var brand = (
     <Box pt={"35px"} mb="8px">
-      <Link href={`${process.env.PUBLIC_URL}/#/`} target="_blank" display="flex" lineHeight="100%" mb="30px" fontWeight="bold" justifyContent="center" alignItems="center" fontSize="11px">
-        <CreativeTimLogo w="32px" h="32px" me="10px" />
+      <Link href="#" target="_blank" display="flex" lineHeight="100%" mb="30px" fontWeight="bold" justifyContent="center" alignItems="center" fontSize="11px">
+        <Box bgImage={LogImage} w="100px" h="32px" me="20px" />
         <Text fontSize="sm" mt="3px">
           {logoText}
         </Text>
